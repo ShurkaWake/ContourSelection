@@ -33,7 +33,7 @@ public class ContourParser
         intensityMatrix = new byte[this.source.Width, this.source.Height];
         Result = new Bitmap(this.source.Width, this.source.Height);
 
-        averageImage = ImageAverage();
+        averageImage = 96;//ImageAverage();
         Parse();
 
         if (isBinary)
@@ -49,7 +49,7 @@ public class ContourParser
     private double Average(int x, int y)
     {
         var pixel = source.GetPixel(x, y);
-        return Math.Sqrt(Math.Pow(pixel.R, 2) + Math.Pow(pixel.G, 2) + Math.Pow(pixel.B, 2));
+        return Math.Sqrt((Math.Pow(pixel.R, 2) + Math.Pow(pixel.G, 2) + Math.Pow(pixel.B, 2)) / 3);
         //return (pixel.R + pixel.G + pixel.B) / 3.0;
     }
 
